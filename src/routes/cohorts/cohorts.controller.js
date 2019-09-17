@@ -15,3 +15,11 @@ exports.index = (req, res) => {
     })
     .catch(err => console.error('Getting cohorts data error:, ', err));
 }
+
+exports.cohort = (req, res) => {
+  db.collection('Cohorts')
+    .doc(req.params.id)
+    .get()
+    .then( doc => res.json(doc.data()))
+    .catch( err => console.error('Getting cohort data error:, ', err));
+}
